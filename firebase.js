@@ -8,15 +8,7 @@ const firebaseConfig = {
   };
 
 firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-const auth = firebase.auth();
-
 let userId = null;
 
-auth.signInAnonymously()
-  .then(() => {
-    console.log("✅ Usuário anônimo autenticado");
-  })
-  .catch((error) => {
-    console.error("Erro na autenticação:", error.message);
-  });
+const db = firebase.firestore();
+const auth = firebase.auth();
