@@ -7,8 +7,9 @@ const firebaseConfig = {
   appId: "1:209879362378:web:b0604956c9153053696fb3"
   };
 
+// 👇 ESSENCIAL para evitar "No Firebase App '[DEFAULT]'..."
 firebase.initializeApp(firebaseConfig);
-let userId = null;
 
+// Usos globais
 const db = firebase.firestore();
 const auth = firebase.auth();
