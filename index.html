@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gacha Infinite</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #8B0000, #FFD700);
+      color: white;
+    }
+    .top-bar {
+      background-color: #111;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .top-bar span {
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+    }
+    .aba {
+      display: none;
+    }
+    .aba.ativa {
+      display: block;
+    }
+    .tabs button {
+      margin: 5px;
+      padding: 10px;
+      border: none;
+      background-color: #FFD700;
+      color: #8B0000;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .card {
+      background: #ffffff22;
+      border: 1px solid #ffffff44;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <span id="nome-exibido">👤 Jogador</span>
+  <span>💰 <span id="moedas">0</span> moedas</span>
+</div>
+
+<div class="container">
+  <div class="tabs">
+    <button onclick="mudarAba('aba-invocacao')">Invocação</button>
+    <button onclick="mudarAba('aba-herois')">Heróis</button>
+    <button onclick="mudarAba('aba-grupo')">Grupos</button>
+    <button onclick="mudarAba('aba-missao')">Missão</button>
+    <button onclick="mudarAba('aba-arena')">Arena</button>
+    <button onclick="mudarAba('aba-raid')">Raid</button>
+    <button onclick="mudarAba('aba-base')">Base</button>
+    <button onclick="mudarAba('aba-treino')">Treino</button>
+    <button onclick="mudarAba('aba-ranking')">Ranking</button>
+  </div>
+
+  <div id="aba-invocacao" class="aba ativa">
+    <h2>Invocação de Herói</h2>
+    <button onclick="comprarPacote(1)">Pacote Comum (100)</button>
+    <button onclick="comprarPacote(2)">Pacote Premium (250)</button>
+  </div>
+
+  <div id="aba-herois" class="aba">
+    <h2>Seus Heróis</h2>
+    <div id="lista-herois"></div>
+  </div>
+
+  <div id="aba-grupo" class="aba">
+    <h2>Grupos</h2>
+    <input type="text" id="nome-grupo" placeholder="Nome do Grupo" />
+    <button onclick="criarGrupo()">Criar Grupo</button>
+    <div id="lista-grupos"></div>
+  </div>
+
+  <div id="aba-missao" class="aba">
+    <h2>Missão</h2>
+    <button onclick="iniciarMissao()">Iniciar Missão</button>
+    <div id="status-missao"></div>
+  </div>
+
+  <div id="aba-arena" class="aba">
+    <h2>Arena PvP</h2>
+    <button onclick="combatePvP()">Iniciar Combate</button>
+    <div id="status-arena"></div>
+  </div>
+
+  <div id="aba-raid" class="aba">
+    <h2>Raid</h2>
+    <button onclick="iniciarRaid()">Iniciar Raid</button>
+    <div id="status-raid"></div>
+  </div>
+
+  <div id="aba-base" class="aba">
+    <h2>Base</h2>
+    <div>
+      Ferreiro: Nível <span id="ferreiro-nivel">1</span>
+      <button onclick="melhorarBase('ferreiro')">Melhorar</button>
+    </div>
+    <div>
+      Alquimista: Nível <span id="alquimista-nivel">1</span>
+      <button onclick="melhorarBase('alquimista')">Melhorar</button>
+    </div>
+    <div>
+      Estábulo: Nível <span id="estabulo-nivel">1</span>
+      <button onclick="melhorarBase('estabulo')">Melhorar</button>
+    </div>
+    <div>
+      Dormitório: Nível <span id="dormitorio-nivel">1</span>
+      <button onclick="melhorarBase('dormitorio')">Melhorar</button>
+    </div>
+  </div>
+
+  <div id="aba-treino" class="aba">
+    <h2>Treinamento</h2>
+    <button onclick="treinarHeroi()">Treinar Primeiro Herói</button>
+    <div id="status-treino"></div>
+  </div>
+
+  <div id="aba-ranking" class="aba">
+    <h2>Ranking Global</h2>
+    <button onclick="carregarRanking()">Atualizar Ranking</button>
+    <div id="ranking-lista"></div>
+  </div>
+</div>
+
+<script type="module" src="firebase.js"></script>
+<script type="module" src="game.js"></script>
+
+</body>
+</html>
